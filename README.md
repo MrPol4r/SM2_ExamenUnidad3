@@ -1,32 +1,167 @@
-# Proyecto Móvil - TrendyCart
+# SM2_ExamenUnidad3
 
-**Curso:** Soluciones Móviles II  
-**Docente:** Dr. Oscar Juan Jimenez Flores  
+**Curso:** SOLUCIONES MÓVILES II
+**Fecha:** 27 de junio de 2025  
+**Estudiante:** Escobar Rejas, Carlos Andrés 
 
-**Integrantes:**
-- Salinas Condori, Erick Javier – 2020069046  
-- Zevallos Purca, Justin Zinedine – 2020066924  
-- Mayner Gonzalo Anahua Coaquira – 2020067145  
-- Escobar Rejas, Carlos Andrés – 2021070016  
-- Huallpa Maron, Jesus – 2021071085  
-- Soto Rodriguez, Duanet – 2015051384  
+## 📎 URL del repositorio
+
+[https://github.com/MrPol4r/SM2_ExamenUnidad3](https://github.com/MrPol4r/SM2_ExamenUnidad3)
 
 ---
 
-# Historias de Usuario
+## 📂 Estructura del proyecto
 
-| ID | Título                              | User Story                                                                                         | Criterios de Aceptación |
-|----|-------------------------------------|-----------------------------------------------------------------------------------------------------|--------------------------|
-| 1  | Inicio Sesión                       | Como usuario, quiero iniciar sesión para acceder al sistema.                                       | **CA01:** Inicio exitoso<br>**CA02:** Credenciales incorrectas |
-| 2  | Registro de Usuario                 | Como cliente y vendedor, quiero registrarme ingresando mis datos personales para usar la plataforma.| **CA01:** Registro exitoso<br>**CA02:** Correo único |
-| 3  | Visualización de Catálogos         | Como cliente, quiero explorar un catálogo con imágenes, precios y calificaciones.                 | **CA01:** Visualización<br>**CA02:** Ordenar por calificación o precio |
-| 4  | Publicación de comentarios          | Como cliente, quiero publicar comentarios para ayudar a otros.                                    | **CA01:** Publicación exitosa<br>**CA02:** Visualización de comentarios |
-| 5  | Buscar productos por categoría      | Como cliente, quiero filtrar productos por categorías.                                             | **CA01:** Filtrado por tipo de producto |
-| 6  | Interacción con chatbot             | Como cliente, quiero resolver dudas mediante un chatbot interactivo.                              | **CA01:** Inicio de la interacción |
-| 7  | Pagos seguros                       | Como cliente, quiero pagar en línea de forma segura.                                               | **CA01:** Selección de método de pago |
-| 8  | Gestión de usuarios (admin)         | Como administrador, quiero gestionar cuentas de usuarios.                                          | **CA01:** Creación de usuario<br>**CA02:** Desactivación de usuario |
-| 9  | Gestión de productos (admin)        | Como administrador, quiero gestionar el inventario de productos.                                   | **CA01:** Agregar nuevo producto |
-| 10 | Actualización del carrito           | Como cliente, quiero que el carrito se actualice automáticamente.                                 | **CA01:** Agregar producto al carrito |
-| 11 | Recuperación de contraseña          | Como usuario, quiero recuperar mi contraseña olvidada.                                             | **CA01:** Solicitud de recuperación<br>**CA02:** Restablecimiento exitoso |
-| 12 | Agregar productos a favoritos       | Como cliente, quiero agregar productos a una lista de deseos.                                     | **CA01:** Agregar a favoritos<br>**CA02:** Visualización de favoritos |
+- `.github/workflows/quality-check.yml`
+- `test/main_test.dart`
+- Todo el proyecto móvil dentro del repositorio público
 
+Ejemplo de estructura:
+```
+SM2_ExamenUnidad3/
+ ├── lib/
+ ├── test/
+ │   └── main_test.dart
+ ├── .github/
+ │   └── workflows/
+ │       └── quality-check.yml
+ ├── pubspec.yaml
+ └── README.md
+```
+
+---
+
+## ✅ Contenido del archivo `quality-check.yml`
+
+```yaml
+name: Quality Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.32.5'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
+```
+
+---
+
+## 🧪 Contenido de `main_test.dart`
+
+```dart
+import 'package:flutter_test/flutter_test.dart';
+import 'package:proyecto_moviles_2/models/product.dart';
+
+void main() {
+  group('🟢 Product', () {
+    test('Producto se crea con nombre no vacío', () {
+      final product = Product(
+        id: 'p1',
+        nombre: 'Polo Azul',
+        precio: 50.0,
+        descuento: 5,
+        descripcion: 'Polo básico azul',
+        valoracion: 4.5,
+        valoracionesTotal: 10,
+        vendidos: 50,
+        imagenes: ['img1.jpg'],
+        colores: ['Azul'],
+        colorImagenes: {'Azul': 'img1.jpg'},
+        tallas: ['M'],
+        descripcionTallas: 'Guía de tallas',
+        comentarios: [],
+        categoria: 'Polos',
+        estado: 'disponible',
+        stock: 5,
+      );
+      expect(product.nombre.isNotEmpty, true);
+    });
+
+    test('copyWith modifica nombre', () {
+      final product = Product(
+        id: 'p1',
+        nombre: 'Polo Azul',
+        precio: 50.0,
+        descuento: 5,
+        descripcion: 'Polo básico azul',
+        valoracion: 4.5,
+        valoracionesTotal: 10,
+        vendidos: 50,
+        imagenes: ['img1.jpg'],
+        colores: ['Azul'],
+        colorImagenes: {'Azul': 'img1.jpg'},
+        tallas: ['M'],
+        descripcionTallas: 'Guía de tallas',
+        comentarios: [],
+        categoria: 'Polos',
+        estado: 'disponible',
+        stock: 5,
+      );
+
+      final nuevo = product.copyWith(nombre: 'Polo Rojo');
+      expect(nuevo.nombre, 'Polo Rojo');
+    });
+  });
+
+  group('🟢 Validación de email básica', () {
+    test('Email contiene @', () {
+      String email = 'usuario@test.com';
+      bool valido = email.contains('@');
+      expect(valido, true);
+    });
+  });
+}
+
+```
+
+---
+
+## 📸 Evidencia del workflow en Actions
+
+### 1️⃣ Carpeta `.github/workflows/`  
+![Estructura de carpetas](assets/1.png)
+
+### 2️⃣ Contenido del archivo `quality-check.yml`  
+![Archivo YAML](assets/2.png)
+
+### 3️⃣ Ejecución del workflow en Actions  
+![Ejecución exitosa](assets/3.png)
+
+---
+
+## ✏️ Explicación de lo realizado
+
+- Se creó el repositorio público **SM2_ExamenUnidad3** y se copió todo el proyecto móvil.
+- Se configuró la carpeta `.github/workflows/` y se agregó `quality-check.yml` con las tareas: `flutter analyze` y `flutter test`.
+- Se agregaron al menos 3 pruebas unitarias básicas en `main_test.dart`.
+- Se verificó que el workflow se ejecuta automáticamente al hacer push o pull request, comprobando que todas las tareas pasen correctamente.
+- Las evidencias se incluyen en capturas de pantalla.
+
+---
+
+## 📌 Consideraciones
+
+- El repositorio es público.
+- El workflow está correctamente ubicado y se ejecuta de forma automática.
+- Este archivo README.md se entregará en formato PDF como evidencia final del examen.
