@@ -61,7 +61,7 @@ class _ChatScreenState extends State<ChatScreen> {
         return "❌ No se pudo obtener respuesta.";
       }
     } else {
-      print("Error Gemini: ${response.statusCode} → ${response.body}");
+      //print("Error Gemini: ${response.statusCode} → ${response.body}");
       return "❌ Error al contactar a Gemini.";
     }
   }
@@ -133,7 +133,7 @@ class _ChatScreenState extends State<ChatScreen> {
               final productos =
                   await _obtenerProductos(); // Usas el método correcto
               final resumen = _generarResumenProductos(productos);
-              print("📦 Producto:\n$resumen");
+              //print("📦 Producto:\n$resumen");
             },
           ),
         ],

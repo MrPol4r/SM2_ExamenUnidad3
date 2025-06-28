@@ -26,9 +26,9 @@ class FavoriteService {
       await favoritesCollection.doc(productId).set({
         'added_at': FieldValue.serverTimestamp(),
       });
-      print('Producto $productId agregado a favoritos.');
+      //print('Producto $productId agregado a favoritos.');
     } else {
-      print('Error: Usuario no logueado para añadir favorito.');
+      //print('Error: Usuario no logueado para añadir favorito.');
     }
   }
 
@@ -37,9 +37,9 @@ class FavoriteService {
     final favoritesCollection = _getFavoritesCollection();
     if (favoritesCollection != null) {
       await favoritesCollection.doc(productId).delete();
-      print('Producto $productId removido de favoritos.');
+      //print('Producto $productId removido de favoritos.');
     } else {
-      print('Error: Usuario no logueado para remover favorito.');
+      //print('Error: Usuario no logueado para remover favorito.');
     }
   }
 

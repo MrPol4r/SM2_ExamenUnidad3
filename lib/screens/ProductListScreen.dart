@@ -28,7 +28,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
     setState(() => _isLoading = true);
     _currentUserId = AuthService.currentUser?.uid;
     if (_currentUserId == null) {
-      print('Advertencia: No hay usuario logueado en ProductListScreen.');
+      //print('Advertencia: No hay usuario logueado en ProductListScreen.');
       setState(() {
         productos = [];
         _isLoading = false;
@@ -40,7 +40,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
   Future<void> _cargarProductos() async {
     if (_currentUserId == null) {
-      print('Error: No se puede cargar productos sin un ID de vendedor.');
+      //print('Error: No se puede cargar productos sin un ID de vendedor.');
       setState(() => _isLoading = false);
       return;
     }

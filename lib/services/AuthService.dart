@@ -18,7 +18,7 @@ class AuthService {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
       return true;
     } on FirebaseAuthException catch (e) {
-      print("❌ Error de login: ${e.code} - ${e.message}");
+      //print("❌ Error de login: ${e.code} - ${e.message}");
       return false;
     }
   }
@@ -51,7 +51,7 @@ class AuthService {
 
       return true;
     } catch (e) {
-      print('❌ Error al registrar: $e');
+      //print('❌ Error al registrar: $e');
       return false;
     }
   }
@@ -62,7 +62,7 @@ class AuthService {
       await _auth.sendPasswordResetEmail(email: email);
       return true;
     } catch (e) {
-      print('❌ Error enviando correo de recuperación: $e');
+      //print('❌ Error enviando correo de recuperación: $e');
       return false;
     }
   }
@@ -103,7 +103,7 @@ class AuthService {
       final data = doc.data();
       return data?['metodoPagoRegistrado'] == true;
     } catch (e) {
-      print('❌ Error al verificar método de pago: $e');
+      //print('❌ Error al verificar método de pago: $e');
       return false;
     }
   }
@@ -123,7 +123,7 @@ class AuthService {
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       final initPoint = data['init_point'];
-      print('🔗 init_point: $initPoint');
+      //print('🔗 init_point: $initPoint');
 
       if (await canLaunchUrl(Uri.parse(initPoint))) {
         await launchUrl(
@@ -134,7 +134,7 @@ class AuthService {
         throw 'No se pudo abrir Mercado Pago';
       }
     } else {
-      print("❌ Error del servidor: ${response.body}");
+      //print("❌ Error del servidor: ${response.body}");
     }
   }
 

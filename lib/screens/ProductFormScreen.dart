@@ -232,8 +232,8 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
       final data = json.decode(resStr);
       return data['secure_url'];
     } else {
-      print('Error al subir: ${response.statusCode}');
-      print('Error al subir la imagen');
+      //print('Error al subir: ${response.statusCode}');
+      //print('Error al subir la imagen');
       return null;
     }
   }

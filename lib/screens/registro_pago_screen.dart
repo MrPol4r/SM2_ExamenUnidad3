@@ -47,7 +47,7 @@ class _RegistroPagoScreenState extends State<RegistroPagoScreen> {
 
       Navigator.pop(context, true); // Devuelve true si lo necesitas
     } catch (e) {
-      print("❌ Error al registrar método de pago: $e");
+      //print("❌ Error al registrar método de pago: $e");
 
       ScaffoldMessenger.of(
         context,

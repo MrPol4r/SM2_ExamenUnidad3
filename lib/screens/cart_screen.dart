@@ -191,7 +191,7 @@ class CartScreen extends StatelessWidget {
                           final data = jsonDecode(response.body);
                           final initPoint = data['init_point'];
 
-                          print('✅ init_point recibido: $initPoint');
+                          //print('✅ init_point recibido: $initPoint');
 
                           if (initPoint == null) {
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -212,7 +212,7 @@ class CartScreen extends StatelessWidget {
                             ),
                           );
                         } else {
-                          print('❌ Error del servidor: ${response.body}');
+                          //print('❌ Error del servidor: ${response.body}');
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Error al crear preferencia'),
@@ -220,7 +220,7 @@ class CartScreen extends StatelessWidget {
                           );
                         }
                       } catch (e) {
-                        print('❌ Error: $e');
+                        //print('❌ Error: $e');
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Error de conexión al servidor'),
