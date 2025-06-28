@@ -140,13 +140,13 @@ void main() {
 ## 📸 Evidencia del workflow en Actions
 
 ### 1️⃣ Carpeta `.github/workflows/`  
-![Estructura de carpetas](assets/1.png)
+![Estructura de carpetas](assets/images/1.png)
 
 ### 2️⃣ Contenido del archivo `quality-check.yml`  
-![Archivo YAML](assets/2.png)
+![Archivo YAML](assets/images/2.png)
 
 ### 3️⃣ Ejecución del workflow en Actions  
-![Ejecución exitosa](assets/3.png)
+![Ejecución exitosa](assets/images/4.png)
 
 ---
 
