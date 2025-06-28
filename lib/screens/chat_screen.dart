@@ -66,21 +66,21 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
-  Future<String> _obtenerRecomendacion(String userPrompt) async {
-    final productos = await _obtenerProductos();
-    final resumen = _generarResumenProductos(productos);
+  //Future<String> _obtenerRecomendacion(String userPrompt) async {
+  //  final productos = await _obtenerProductos();
+  //  final resumen = _generarResumenProductos(productos);
+//
+  //  final mensajeCompleto = """
+  //  Usuario: $userPrompt
 
-    final mensajeCompleto = """
-    Usuario: $userPrompt
+  //  Aquí tienes los productos disponibles:
+  //  $resumen
 
-    Aquí tienes los productos disponibles:
-    $resumen
+  //  Con base en estos productos, ¿cuál recomendarías?
+  //  """;
 
-    Con base en estos productos, ¿cuál recomendarías?
-    """;
-
-    return await _getGeminiResponse(mensajeCompleto);
-  }
+  //  return await _getGeminiResponse(mensajeCompleto);
+  //}
 
   void _sendMessage(String text) async {
     if (text.trim().isEmpty) return;

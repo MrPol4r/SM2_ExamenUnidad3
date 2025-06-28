@@ -202,7 +202,7 @@ class CartScreen extends StatelessWidget {
                             continue;
                           }
 
-                          final url = Uri.parse(initPoint);
+                          //inal url = Uri.parse(initPoint);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
