@@ -146,7 +146,7 @@ void main() {
 ![Archivo YAML](assets/images/2.png)
 
 ### 3️⃣ Ejecución del workflow en Actions  
-![Ejecución exitosa](assets/images/4.png)
+![Ejecución exitosa](assets/images/5.png)
 
 ---
 
