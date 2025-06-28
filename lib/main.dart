@@ -13,7 +13,7 @@ import 'firebase_options.dart';
 
 // Pantallas de tu app
 import 'screens/main_screen.dart';
-import 'screens/home_screen.dart';
+//import 'screens/home_screen.dart';
 import 'screens/catalog_screen.dart';
 import 'screens/chat_screen.dart';
 

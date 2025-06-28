@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/product.dart'; // Asegúrate que esté bien referenciado
-import 'package:proyecto_moviles_2/screens/product_detail_screen.dart';
+//import 'package:proyecto_moviles_2/screens/product_detail_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
